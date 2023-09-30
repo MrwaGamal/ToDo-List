@@ -38,17 +38,26 @@ def add_task():
 
 #function that mark task as completed
 def mark_task():
-  if task:
-    view_incomplete_tasks()
-    completed = input("enter the number of the function that you need to mark as completed: ")
-    x= int(completed)
-    x=x-1
-    ended_tasks.append(task.pop(x))
-    view_incomplete_tasks()
-    
-    print("Updated successfully")
-  else: 
-    print("No tasks to mark as completed")
+  try:
+    if task:
+      view_incomplete_tasks()
+      completed = input("Enter the number of task to mark as complete: ")
+      x= int(completed)
+      if x < 1 or x > len(task):
+        print("Enter Existing task number")
+        mark_task()
+      x=x-1
+      ended_tasks.append(task.pop(x))
+      view_incomplete_tasks()
+      
+      print("Updated successfully")
+    else: 
+      print("No tasks to mark as completed")
+  except ValueError:
+    print("Please enter a Number")
+    mark_task()
+  
+
 
 #function that view all the taskt
 def view_incomplete_tasks():
