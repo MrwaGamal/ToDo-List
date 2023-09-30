@@ -80,5 +80,7 @@ def view_all_tasks():
 
 
 #call the main
-main()
+""""__name__ is string vairable that return main if its called from the same file but it gives another name from another file so it won't run """
+if __name__== "__main__":
+  main()
 
